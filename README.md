@@ -1,6 +1,6 @@
 # Smart Order System
 ```
-Um sistema para gerência de pedidos para resaurantes
+Um sistema para gerência de pedidos para restaurantes
 ```
 
 
