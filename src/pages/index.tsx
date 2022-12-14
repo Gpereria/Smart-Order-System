@@ -6,6 +6,7 @@ import styles from '../../styles/home.module.scss';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+// import { GetServerSideProps } from 'next';
 
 
 import { Input } from '../components/ui/Input';
@@ -16,6 +17,7 @@ import { toast } from 'react-Toastify';
 import { AuthContext } from '../contexts/AuthContext';
 
 
+import { canSSRGuest } from '../utils/canSSRGuest';
 
 export default function Home() {
   const {signIn} = useContext(AuthContext);
@@ -50,6 +52,7 @@ export default function Home() {
         <title>SmartOrder - Home</title>
       </Head>
       <div className={styles.containerCenter}>
+
         <Image src={logo} alt="SmartOrder" className={styles.imglogo} priority={true} />
         <div className={styles.login}>
           <form onSubmit={handleLogin} >
@@ -79,7 +82,15 @@ export default function Home() {
              Não possui uma conta? Cadastre-se
           </Link>
         </div>
+
       </div>
     </>
   )
 }
+
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+  return {
+    props:{}
+    
+  }
+})
